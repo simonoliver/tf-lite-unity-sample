@@ -53,7 +53,10 @@ If you do not have the Android SDK and NDK, intall Android Studio, SDK and NDK.
 # Configure the Android SDK path by running configure script at repository root
 ./configure
 
-# Build experimental
+# Build C Library
+bazel build -c opt --cxxopt=--std=c++11 --config=android_arm64 //tensorflow/lite/c:libtensorflowlite_c.so
+
+# Build experimental C Library (use this for older releases of TensorFlow Lite)
 bazel build -c opt --cxxopt=--std=c++11 --config=android_arm64 //tensorflow/lite/experimental/c:libtensorflowlite_c.so
 
 # Build GPU delegate
